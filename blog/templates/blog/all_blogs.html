@@ -1,0 +1,16 @@
+<h1> MY BLOG</h1>
+
+
+
+<h2>I have written {{ all_blog_posts.count}} post{{ all_blog_posts.count|pluralize }}</h2>
+
+{% for blog in all_blog_posts %}
+
+<a href="{% url 'blog:detail' blog.id %}" ><h2>{{ blog.title }}</h2></a>
+<p>{{ blog.date }}</p>
+<p>{{ blog.description|safe|truncatechars:100 }}</p>
+{% if blog.url %}
+<a href="{{ blog.url }}">link<a>
+{% endif %}
+<br>
+{% endfor %}
